@@ -41,9 +41,10 @@ jobs:
         run: |
           brew update
           brew install autoconf automake libtool nettle pkg-config gtk+3 gnome-icon-theme hicolor-icon-theme
-      - name: Build
+      - name: Build/check/install
+        env:
+          LIBTOOL: glibtool
         run: |
-          export LIBTOOL=glibtool
           ./autogen.sh
           ./configure
           make
